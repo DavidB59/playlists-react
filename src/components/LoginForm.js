@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function LoginForm(props) {
   return (<form onSubmit={props.onSubmit}> 
@@ -12,6 +13,9 @@ export default function LoginForm(props) {
     </label>
     
     <button type="submit">Login</button>
+
+    <Link to="/signup" ><button type="submit">No account ? Sign Up</button></Link>
+
   </form>)
 }
 

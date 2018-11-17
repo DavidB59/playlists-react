@@ -9,6 +9,9 @@ class LoginFormContainer extends React.Component {
   onSubmit = (event) => {
     event.preventDefault()
     this.props.login(this.state.email, this.state.password)
+    //this.props.history.push('/')
+   // if (this.props.currentUser===null) {alert('invalid email or password')}
+   // else if (this.props.currentUSer !==null) {this.props.history.push('/')}
   }
 
   onChange = (event) => {
@@ -16,10 +19,13 @@ class LoginFormContainer extends React.Component {
       [event.target.name]: event.target.value
     })
   }
-
+  
   render() {
+    //console.log(this.props.currentUser)
     return <LoginForm onSubmit={this.onSubmit} onChange={this.onChange} values={this.state} />
   }
 }
-
-export default connect(null, {login})(LoginFormContainer)
+const mapStateToProps = state => ({
+  currentUser: state.currentUser
+})
+export default connect(mapStateToProps, {login})(LoginFormContainer)

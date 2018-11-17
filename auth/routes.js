@@ -51,13 +51,13 @@ router.post('/logins', (req, res, next) => {
 
 })
 
-/*
+
 router.get('/secret-endpoint', auth, (req, res) => {
   res.send({
     message: `Thanks for visiting the secret endpoint ${req.user.email}.`,
   })
 })
-*/
+/*
 router.get('/secret-endpoint', (req, res) => {
   const auth = req.headers.authorization && req.headers.authorization.split(' ')
   if (auth && auth[0] === 'Bearer' && auth[1]) {
@@ -80,7 +80,7 @@ router.get('/secret-endpoint', (req, res) => {
     })
   }
 })
-
+*/
 
 module.exports = router
 
