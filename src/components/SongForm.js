@@ -3,23 +3,23 @@ import React from 'react'
 //import {connect} from 'react-redux'
 //import EventsForm from './EventsForm'
 
-export default function EventForm(props) {
+export default function SongForm(props) {
   return (<div>
 <form onSubmit={props.onSubmit}>
    <label>
-     Name:
-     <input  name="name" onChange={props.onChange} value={props.values.name} />
+     Title:
+     <input  name="title" onChange={props.onChange} value={props.values.title} />
    </label>
 
    <label>
-     Date:
-     <input  name="date" onChange={props.onChange} value={props.values.date} />
+     Artist:
+     <input  name="artist" onChange={props.onChange} value={props.values.artist} />
    </label>
 
    <label>
-     Description:
-     <input  name="description" onChange={props.onChange} value={props.values.description} />
-   </label>
+     Album:
+     <input  name="album" onChange={props.onChange} value={props.values.album} />
+  </label>
 
    <button type="submit">Save</button>
  </form>
@@ -34,8 +34,8 @@ export default function EventForm(props) {
 
  <form>
       <input   name="name" value={props.values.name} onChange={props.onChange}  />
-          <input value={props.values.date} onChange={props.onChange}  />
-          <input value={props.values.description} onChange={props.onChange}  />
+          <input value={props.values.Artist} onChange={props.onChange}  />
+          <input value={props.values.album} onChange={props.onChange}  />
          </form>
         
 

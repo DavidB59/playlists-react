@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import store from './store'
 import {Provider} from 'react-redux'
 import { Route } from 'react-router-dom'
-//import Home from './components/Home'
-import EventsListContainer from './components/EventsListContainer'
-import CreateEventFormContainer from './components/CreateEventFormContainer'
-import EventDetailsContainer from './components/EventDetailsContainer'
+import PlaylistsListContainer from './components/PlaylistsListContainer'
+import CreatePlaylistFormContainer from './components/CreatePlaylistFormContainer'
+import PlaylistDetailsContainer from './components/PlaylistDetailsContainer'
+import CreateSongFormContainer from './components/CreateSongFormContainer'
+
 //import LoginFormContainer from './components/LoginFormContainer'
 //           <Route path="/login" component={LoginFormContainer} />
 
@@ -15,9 +16,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div>
-          <Route path="/" exact component={EventsListContainer} />
-          <Route path="/" exact component={CreateEventFormContainer} />
-          <Route path="/events/:id" component={EventDetailsContainer} />
+           <Route path="/" exact component={PlaylistsListContainer} />
+           <Route path="/" exact component={CreatePlaylistFormContainer} />
+           <Route path="/playlists/:id" component={PlaylistDetailsContainer} />
+           <Route path="/playlists/:id" component={CreateSongFormContainer} />
 
         </div>
       </Provider>

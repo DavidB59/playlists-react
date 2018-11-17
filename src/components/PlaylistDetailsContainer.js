@@ -1,11 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import EventDetails from './EventDetails'
-import {loadEvent, deleteEvent} from '../actions/events'
+import PlaylistDetails from './PlaylistDetails'
+import {loadPlaylist, deletePlaylist} from '../actions/playlists'
 
-class EventDetailsContainer extends React.Component {
+class PlaylistDetailsContainer extends React.Component {
   componentDidMount() {
-    this.props.loadEvent(Number(this.props.match.params.id))
+    this.props.loadPlaylist(Number(this.props.match.params.id))
   }
 
   onDelete = () => {
@@ -46,12 +46,12 @@ class EventDetailsContainer extends React.Component {
     this.setState({
       editMode: false
     })
-    this.props.updateEvent(this.props.event.id, this.state.formValues)
+    this.props.updatePlaylist(this.props.event.id, this.state.formValues)
   }
 
   render() {
-    return <EventDetails 
-    event={this.props.event}        
+    return <PlaylistDetails 
+    playlist={this.props.playlist}        
     onDelete={this.onDelete}
     onSubmit={this.onSubmit}
     onEdit={this.onEdit}
@@ -64,7 +64,7 @@ class EventDetailsContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  event: state.event
+  playlist: state.playlist
 })
 
-export default connect(mapStateToProps, {loadEvent,deleteEvent})(EventDetailsContainer)
+export default connect(mapStateToProps, {loadPlaylist,deletePlaylist})(PlaylistDetailsContainer)

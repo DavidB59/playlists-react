@@ -1,11 +1,11 @@
 export default (state = null, action = {}) => {
   switch (action.type) {
     case "EVENTS_FETCHED":
-      return action.events
+      return action.playlists
       case "EVENT_CREATE_SUCCESS":
-      if (action.event.name===''){
+      if (action.playlist.name===''){
         return state}
-      return [...state,action.event]
+      return [...state,action.playlist]
     
       case 'EVENT_DELETE_SUCCESS':
       console.log(action.id)

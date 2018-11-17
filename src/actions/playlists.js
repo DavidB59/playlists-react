@@ -5,31 +5,31 @@ export const EVENT_FETCHED = 'EVENT_FETCHED'
 export const EVENT_DELETE_SUCCESS= 'EVENT_DELETE_SUCCESS'
 
 const baseUrl = 'http://localhost:4000'
-const eventsFetched = events => ({
+const eventsFetched = playlists => ({
   type: EVENTS_FETCHED,
-  events
+  playlists
 })
 
-export const loadEvents = () => (dispatch, getState) => {
-  if (getState().events) return 
-  console.log('yeah mean')
+export const loadPlaylists = () => (dispatch, getState) => {
+  if (getState().playlists) return 
+  console.log('loading playlistS')
   request(`${baseUrl}/playlists`)
     .then(response => {
-      dispatch(eventsFetched(response.body))
+      dispatch(eventsFetched(response.body.playlists))
     })
     .catch(console.error)
 }
 
 export const EVENT_CREATE_SUCCESS = 'EVENT_CREATE_SUCCESS'
 
-const eventCreateSuccess = event => ({
+const eventCreateSuccess = playlist => ({
   type: EVENT_CREATE_SUCCESS,
-  event
+  playlist
 })
 
-export const createEvent = (data) => dispatch => {
+export const createPlaylist = (data) => dispatch => {
   request
-    .post(`${baseUrl}/events`)
+    .post(`${baseUrl}/playlists`)
     .send(data)
     .then(response => {
       dispatch(eventCreateSuccess(response.body))
@@ -40,15 +40,17 @@ export const createEvent = (data) => dispatch => {
 
 // my load event function
 
-const eventFetched = event => ({
+const eventFetched = playlist => ({
   type: EVENT_FETCHED,
-  event
+  playlist
 })
 
 
-export const loadEvent = (id) => dispatch => {
+export const loadPlaylist = (id) => dispatch => {
+  console.log('loading playlist O')
+
   request
-    .get(`${baseUrl}/events/${id}`)
+    .get(`${baseUrl}/playlists/${id}`)
 //.send(id)
     .then(response => {
       dispatch(eventFetched(response.body))
@@ -65,9 +67,9 @@ const eventDeleted = id => ({
   id
 })
 
-export const deleteEvent = (id) => dispatch => {
+export const deletePlaylist = (id) => dispatch => {
   request
-    .delete(`${baseUrl}/events/${id}`)
+    .delete(`${baseUrl}/playlists/${id}`)
 //.send(id)
     .then(() => {
       dispatch(eventDeleted(id))
@@ -92,12 +94,15 @@ export const update = (id,data) => dispatch => {
 }*/
 
 // double arrow function is an higher order function.
+/*
 export const updateEvent = (id, data) => dispatch => {
   request
-    .patch(`${baseUrl}/events/${id}`)
+    .patch(`${baseUrl}/playlists/${id}`)
     .send(data)
     .then(response => {
       dispatch(updatedEvent(response.body))
     })
     .catch(console.error)
 }
+
+*/

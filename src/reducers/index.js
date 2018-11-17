@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux'
-import events from './events'
-import event from './event'
+import playlists from './playlists'
+import playlist from './playlist'
 import currentUser from './currentUser'
 
 export default combineReducers({
-events, event,currentUser})
+playlists, playlist,currentUser})

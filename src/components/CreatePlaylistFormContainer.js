@@ -1,13 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {createEvent} from '../actions/events'
-import EventForm from './EventForm'
+import {createPlaylist} from '../actions/playlists'
+import PlaylistForm from './PlaylistForm'
 
-class CreateEventFormContainer extends React.Component {
+class CreatePlaylistFormContainer extends React.Component {
   state = {
     name: '',
-    date: '',
-    description: ''
   }
 
   onChange = (event) => {
@@ -20,14 +18,12 @@ class CreateEventFormContainer extends React.Component {
     event.preventDefault()
     this.setState({
       name: '',
-      date: '',
-      description: ''
     })
-    this.props.createEvent(this.state)
+    this.props.createPlaylist(this.state)
   }
 
   render() {
-    return (<EventForm
+    return (<PlaylistForm
       onSubmit={this.onSubmit}
       onChange={this.onChange}
       values={this.state}
@@ -35,4 +31,4 @@ class CreateEventFormContainer extends React.Component {
   }
 }
 
-export default connect(null, {createEvent})(CreateEventFormContainer)
+export default connect(null, {createPlaylist})(CreatePlaylistFormContainer)
