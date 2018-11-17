@@ -11,9 +11,9 @@ const eventCreateSuccess = song => ({
   song
 })
 
-export const createSong = (data) => dispatch => {
+export const createSong = (data,id) => dispatch => {
   request
-    .post(`${baseUrl}/songs`)
+    .post(`${baseUrl}/playlists/${id}/songs`)
     .send(data)
   //  .then(response => {
   //    dispatch(eventCreateSuccess(response.body))
