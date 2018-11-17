@@ -13,6 +13,7 @@ const eventsFetched = playlists => ({
 export const loadPlaylists = () => (dispatch, getState) => {
   if (getState().playlists) return 
   console.log('loading playlistS')
+  console.log(baseUrl)
   request(`${baseUrl}/playlists`)
     .then(response => {
       dispatch(eventsFetched(response.body.playlists))
