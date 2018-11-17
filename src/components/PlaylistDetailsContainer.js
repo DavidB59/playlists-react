@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import PlaylistDetails from './PlaylistDetails'
 import {loadPlaylist, deletePlaylist} from '../actions/playlists'
+import { Link } from 'react-router-dom'
 
 class PlaylistDetailsContainer extends React.Component {
   componentDidMount() {
@@ -10,7 +11,7 @@ class PlaylistDetailsContainer extends React.Component {
 
   onDelete = () => {
     //event.preventDefault()
-   this.props.deleteEvent(this.props.match.params.id)
+   this.props.deletePlaylist(this.props.match.params.id)
    this.props.history.push('/')
   }
 
@@ -50,7 +51,7 @@ class PlaylistDetailsContainer extends React.Component {
   }
 
   render() {
-    return <PlaylistDetails 
+    return <> <PlaylistDetails 
     playlist={this.props.playlist}        
     onDelete={this.onDelete}
     onSubmit={this.onSubmit}
@@ -59,7 +60,8 @@ class PlaylistDetailsContainer extends React.Component {
     formValues={this.state.formValues}
     editMode={this.state.editMode}
     />
-    
+    <Link to={ `/` }>  <button >Back</button> </Link>
+     </>
   }
 }
 

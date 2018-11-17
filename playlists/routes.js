@@ -51,7 +51,7 @@ router.put('/playlists/:id', (req, res, next) => {
 
 router.delete('/playlists/:id', (req, res, next) => {
   Playlist
-    .findById(req.params.id)
+    .findById(req.params.id, { include: [Song]})
     .then(playlist=> {
       if (!playlist) {
         return res.status(404).send({
@@ -64,6 +64,7 @@ router.delete('/playlists/:id', (req, res, next) => {
         }))
     })
     .catch(error => next(error))
+  
 })
 
 module.exports = router

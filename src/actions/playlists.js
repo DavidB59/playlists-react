@@ -71,7 +71,7 @@ const eventDeleted = id => ({
 export const deletePlaylist = (id) => dispatch => {
   request
     .delete(`${baseUrl}/playlists/${id}`)
-//.send(id)
+//  .send(id)
     .then(() => {
       dispatch(eventDeleted(id))
     })
