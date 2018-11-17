@@ -4,7 +4,7 @@ export const EVENTS_FETCHED = 'EVENTS_FETCHED'
 export const EVENT_FETCHED = 'EVENT_FETCHED'
 export const EVENT_DELETE_SUCCESS= 'EVENT_DELETE_SUCCESS'
 
-const baseUrl = 'http://localhost:4000'
+const baseUrl = 'https://tranquil-scrubland-12046.herokuapp.com/'
 const eventsFetched = playlists => ({
   type: EVENTS_FETCHED,
   playlists

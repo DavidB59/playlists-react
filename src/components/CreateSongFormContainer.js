@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {createSong} from '../actions/songs'
 import SongForm from './SongForm'
+import {loadPlaylist} from '../actions/playlists'
 
 class CreateSongFormContainer extends React.Component {
   state = {
@@ -18,7 +19,7 @@ class CreateSongFormContainer extends React.Component {
   }
 
   onSubmit = (event) => {
-    event.preventDefault()
+    //pomevent.preventDefault()
     this.setState({
       title: '',
       artist:'',
@@ -26,6 +27,7 @@ class CreateSongFormContainer extends React.Component {
     }
   )
     this.props.createSong(this.state)
+    //this.props.loadPlaylist(Number(this.props.match.params.id))
   }
 
   render() {
@@ -37,4 +39,4 @@ class CreateSongFormContainer extends React.Component {
   }
 }
 
-export default connect(null, {createSong})(CreateSongFormContainer)
+export default connect(null, {createSong,loadPlaylist})(CreateSongFormContainer)
