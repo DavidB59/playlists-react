@@ -12,7 +12,9 @@ return (
         {!props.playlist ? <h1>Loading... </h1> :
      <>
         <h1>{props.playlist.name}</h1>
-        <ul> {props.playlist.songs.map(event => <li key={event.title} > Title : {event.title} Artist : {event.artist}
+        <ul> {props.playlist.songs.map(event => 
+        <li key={event.title} > 
+       <p>Title : {event.title} Artist : {event.artist} Album : {event.album} </p> 
 
        </li> )}</ul>
                                                 </>
