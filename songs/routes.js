@@ -20,7 +20,7 @@ router.get('/songs/:id', (req, res, next) => {
     .catch(error => next(error))
 })
 
-router.post('/songs', (req, res, next) => {
+router.post('/playlists/:id/songs', (req, res, next) => {
   Song
     .create(req.body)
     .then(song => {

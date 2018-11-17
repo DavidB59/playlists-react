@@ -26,7 +26,7 @@ class CreateSongFormContainer extends React.Component {
       album:''
     }
   )
-    this.props.createSong(this.state)
+    this.props.createSong(this.state,Number(this.props.match.params.id))
     //this.props.loadPlaylist(Number(this.props.match.params.id))
   }
 
