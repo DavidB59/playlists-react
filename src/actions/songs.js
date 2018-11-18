@@ -1,7 +1,7 @@
 import request from 'superagent'
 
 
-const baseUrl = 'http://localhost:4000'
+const baseUrl = 'https://tranquil-scrubland-12046.herokuapp.com/'
 
 
 export const CREATE_SONG = 'CREATE_SONG'

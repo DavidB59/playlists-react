@@ -3,7 +3,7 @@
 
  export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
  
- const baseUrl = 'https://tranquil-scrubland-12046.herokuapp.com/'
+const baseUrl = 'https://tranquil-scrubland-12046.herokuapp.com/'
  
  const loginSuccess = (jwt) => ({
    type: LOGIN_SUCCESS,
