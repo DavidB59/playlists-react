@@ -9,7 +9,7 @@ class CreateSongFormContainer extends React.Component {
     title: '',
     artist:'',
     album:'',
-    playlistId:Number(this.props.match.params.id)
+    playlistId:Number(this.props.id)
   }
 
   onChange = (event) => {
@@ -19,15 +19,15 @@ class CreateSongFormContainer extends React.Component {
   }
 
   onSubmit = (event) => {
-    //pomevent.preventDefault()
+    event.preventDefault() // need to prevent so that state doesnt refresh at the moment
     this.setState({
       title: '',
       artist:'',
       album:''
     }
   )
-    this.props.createSong(this.state,Number(this.props.match.params.id))
-    //this.props.loadPlaylist(Number(this.props.match.params.id))
+    this.props.createSong(this.state,Number(this.props.id))
+    //this.props.loadPlaylist(Number(this.props.id))
   }
 
   render() {

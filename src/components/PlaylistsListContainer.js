@@ -2,6 +2,7 @@ import React from 'react'
 import {loadPlaylists} from '../actions/playlists'
 import {connect} from 'react-redux'
 import PlaylistList from './PlaylistsList'
+import CreatePlaylistFormContainer from './CreatePlaylistFormContainer'
 
 class PlaylistListContainer extends React.Component {
   componentDidMount() {
@@ -9,7 +10,13 @@ class PlaylistListContainer extends React.Component {
   }
 
   render() {
-    return <PlaylistList playlists={this.props.playlists} />
+    return (
+    <>  
+    <PlaylistList playlists={this.props.playlists} />
+    <CreatePlaylistFormContainer></CreatePlaylistFormContainer>
+    </>  
+
+    )
   }
 }
 

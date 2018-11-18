@@ -5,9 +5,9 @@ import {withRouter} from 'react-router'
 
 
 import PlaylistsListContainer from './PlaylistsListContainer'
-import CreatePlaylistFormContainer from './CreatePlaylistFormContainer'
+//import CreatePlaylistFormContainer from './CreatePlaylistFormContainer'
 import PlaylistDetailsContainer from './PlaylistDetailsContainer'
-import CreateSongFormContainer from './CreateSongFormContainer'
+//import CreateSongFormContainer from './CreateSongFormContainer'
 import CreateUserFormContainer from './CreateUserFormContainer'
 import LoginFormContainer from './LoginFormContainer'
 
@@ -23,10 +23,10 @@ function Routes(props) {
 
     {props.authenticated &&
      <Switch>
-     <Route path="/" component={PlaylistsListContainer} />
-     <Route path="/" component={CreatePlaylistFormContainer} />
-     <Route path="/playlists/:id" component={PlaylistDetailsContainer} />
-     <Route path="/playlists/:id" component={CreateSongFormContainer} />
+     <Route path="/" exact component={PlaylistsListContainer} />
+     <Route path="/playlists/:id"  component={PlaylistDetailsContainer} />
+     <Route path="" render={() => <Redirect to="/" />} />
+
      </Switch>}
   </div>
   

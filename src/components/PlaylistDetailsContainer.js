@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import PlaylistDetails from './PlaylistDetails'
 import {loadPlaylist, deletePlaylist} from '../actions/playlists'
 import { Link } from 'react-router-dom'
+import CreateSongFormContainer from './CreateSongFormContainer'
 
 class PlaylistDetailsContainer extends React.Component {
   componentDidMount() {
@@ -51,7 +52,7 @@ class PlaylistDetailsContainer extends React.Component {
   }
 
   render() {
-    return <> <PlaylistDetails 
+    return (<> <PlaylistDetails 
     playlist={this.props.playlist}        
     onDelete={this.onDelete}
     onSubmit={this.onSubmit}
@@ -61,7 +62,10 @@ class PlaylistDetailsContainer extends React.Component {
     editMode={this.state.editMode}
     />
     <Link to={ `/` }>  <button >Back</button> </Link>
+    <CreateSongFormContainer id={this.props.match.params.id}></CreateSongFormContainer>
      </>
+
+    )
   }
 }
 
