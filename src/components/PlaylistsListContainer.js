@@ -5,10 +5,10 @@ import PlaylistList from './PlaylistsList'
 import CreatePlaylistFormContainer from './CreatePlaylistFormContainer'
 
 class PlaylistListContainer extends React.Component {
+  
   componentDidMount() {
-    this.props.loadPlaylists()
+    this.props.loadPlaylists(this.props.token)
   }
-
   render() {
     return (
     <>  
@@ -21,7 +21,8 @@ class PlaylistListContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  playlists: state.playlists
+  playlists: state.playlists,
+  token:state.currentUser
 })
 
 export default connect(mapStateToProps, {loadPlaylists})(PlaylistListContainer)  

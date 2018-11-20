@@ -1,6 +1,8 @@
 import request from 'superagent'
+import {baseUrl} from './auth'
 
-const baseUrl = 'https://tranquil-scrubland-12046.herokuapp.com/'
+//const baseUrl = 'https://tranquil-scrubland-12046.herokuapp.com/'
+//const baseUrl = 'http://localhost:4000'
 
 
 export const createUser = (data) => dispatch => {

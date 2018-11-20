@@ -1,25 +1,26 @@
 import request from 'superagent'
-
+import {baseUrl} from './auth'
 export const EVENTS_FETCHED = 'EVENTS_FETCHED'
 export const EVENT_FETCHED = 'EVENT_FETCHED'
 export const EVENT_DELETE_SUCCESS= 'EVENT_DELETE_SUCCESS'
 
-const baseUrl = 'https://tranquil-scrubland-12046.herokuapp.com/'
+//const baseUrl = 'https://tranquil-scrubland-12046.herokuapp.com/'
+//const baseUrl = 'http://localhost:4000'
+
 const eventsFetched = playlists => ({
   type: EVENTS_FETCHED,
   playlists
 })
 
-export const loadPlaylists = () => (dispatch, getState) => {
+export const loadPlaylists = (token) => (dispatch, getState) => {
   if (getState().playlists) return 
-  console.log('loading playlistS')
-  console.log(process.env.DATABASE_URL)
-  console.log(baseUrl)
-  request(`${baseUrl}/playlists`)
+    console.log(token) 
+   request.get(`${baseUrl}/playlists`).set('Authorization',`Bearer ${token}`) 
     .then(response => {
-      dispatch(eventsFetched(response.body.playlists))
+      console.log(response)
+      dispatch(eventsFetched(response.body))
     })
-    .catch(console.error)
+    .catch(console.error);
 }
 
 export const EVENT_CREATE_SUCCESS = 'EVENT_CREATE_SUCCESS'
@@ -29,9 +30,10 @@ const eventCreateSuccess = playlist => ({
   playlist
 })
 
-export const createPlaylist = (data) => dispatch => {
+export const createPlaylist = (data,token) => dispatch => {
   request
-    .post(`${baseUrl}/playlists`)
+    .post(`${baseUrl}/playlists`).set('Authorization',`Bearer ${token}`) 
+
     .send(data)
     .then(response => {
       dispatch(eventCreateSuccess(response.body))
@@ -48,11 +50,10 @@ const eventFetched = playlist => ({
 })
 
 
-export const loadPlaylist = (id) => dispatch => {
-  console.log('loading playlist O')
-
+export const loadPlaylist = (id,token) => dispatch => {
   request
-    .get(`${baseUrl}/playlists/${id}`)
+    .get(`${baseUrl}/playlists/${id}`).set('Authorization',`Bearer ${token}`) 
+
 //.send(id)
     .then(response => {
       dispatch(eventFetched(response.body))
@@ -69,9 +70,10 @@ const eventDeleted = id => ({
   id
 })
 
-export const deletePlaylist = (id) => dispatch => {
+export const deletePlaylist = (id,token) => dispatch => {
   request
-    .delete(`${baseUrl}/playlists/${id}`)
+    .delete(`${baseUrl}/playlists/${id}`).set('Authorization',`Bearer ${token}`) 
+
 //  .send(id)
     .then(() => {
       dispatch(eventDeleted(id))
@@ -80,10 +82,10 @@ export const deletePlaylist = (id) => dispatch => {
 }
 
 //export const deleteEvent = () => { console.log('bla')}
-const updatedEvent = id => ({
-  type: "UPDATE",
-  id
-})
+// const updatedEvent = id => ({
+//   type: "UPDATE",
+//   id
+// })
 /*
 export const update = (id,data) => dispatch => {
   request

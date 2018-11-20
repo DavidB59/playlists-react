@@ -7,12 +7,12 @@ import CreateSongFormContainer from './CreateSongFormContainer'
 
 class PlaylistDetailsContainer extends React.Component {
   componentDidMount() {
-    this.props.loadPlaylist(Number(this.props.match.params.id))
+    this.props.loadPlaylist(Number(this.props.match.params.id),this.props.token)
   }
 
   onDelete = () => {
     //event.preventDefault()
-   this.props.deletePlaylist(this.props.match.params.id)
+   this.props.deletePlaylist(this.props.match.params.id,this.props.token)
    this.props.history.push('/')
   }
 
@@ -70,7 +70,8 @@ class PlaylistDetailsContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  playlist: state.playlist
+  playlist: state.playlist,
+  token:state.currentUser
 })
 
 export default connect(mapStateToProps, {loadPlaylist,deletePlaylist})(PlaylistDetailsContainer)

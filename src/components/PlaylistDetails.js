@@ -6,8 +6,7 @@ import PlaylistForm from './PlaylistForm'
 export default function PlaylistDetails(props) {
 return (
  <div>
-    <button onClick={props.onEdit} type="submit">Edit Mode</button>
-   {props.editMode ? <PlaylistForm values={{}} /> :
+ 
      <div>
         {!props.playlist ? <h1>Loading... </h1> :
      <>
@@ -22,7 +21,7 @@ return (
 <button onClick={props.onDelete} type="submit">Delete this playlist</button>
                                                 </div>
 
-                                        }
+                                        
 
 
                                 </div>)

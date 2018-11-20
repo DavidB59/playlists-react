@@ -19,7 +19,7 @@ class CreatePlaylistFormContainer extends React.Component {
     this.setState({
       name: '',
     })
-    this.props.createPlaylist(this.state)
+    this.props.createPlaylist(this.state,this.props.token)
   }
 
   render() {
@@ -30,5 +30,7 @@ class CreatePlaylistFormContainer extends React.Component {
     />)
   }
 }
-
-export default connect(null, {createPlaylist})(CreatePlaylistFormContainer)
+const mapStateToProps = state => ({
+  token:state.currentUser
+})
+export default connect(mapStateToProps, {createPlaylist})(CreatePlaylistFormContainer)
