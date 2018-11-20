@@ -25,9 +25,11 @@ class CreateSongFormContainer extends React.Component {
       artist:'',
       album:''
     }
+
   )
-    this.props.createSong(this.state,Number(this.props.id))
-    //this.props.loadPlaylist(Number(this.props.id))
+    this.props.createSong(this.state,Number(this.props.id),this.props.token)
+    this.props.loadPlaylist(Number(this.props.id),this.props.token)
+    console.log(this.props)
   }
 
   render() {
@@ -38,5 +40,7 @@ class CreateSongFormContainer extends React.Component {
     />)
   }
 }
-
-export default connect(null, {createSong,loadPlaylist})(CreateSongFormContainer)
+const mapStateToProps = state => ({
+  token:state.currentUser
+})
+export default connect(mapStateToProps, {createSong,loadPlaylist})(CreateSongFormContainer)

@@ -11,7 +11,7 @@ const Playlist = sequelize.define('playlists', {
   },
   userId: {
     type: Sequelize.INTEGER,
-    field: 'user_id'
+    field: 'user_id',
   }
 }, {
   timestamps: false,
@@ -19,6 +19,7 @@ const Playlist = sequelize.define('playlists', {
 })
 Playlist.belongsTo(User)
 Playlist.hasMany(Song, {onDelete: 'CASCADE'})
+Song.belongsTo(Playlist)
 module.exports = Playlist
 
 
